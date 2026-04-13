@@ -23,10 +23,10 @@ function useScrollFadeIn(delay: number = 0) {
 
         // 페이지 로드 직후 이미 보이는 요소 처리
         const rect = element.getBoundingClientRect();
-        const isAlreadyVisible = rect.top < window.innerHeight * 0.9;
+        const isAlreadyVisible = rect.top < window.innerHeight * 0.7;
 
         if (isAlreadyVisible) {
-            setTimeout(() => setIsVisible(true), delay + 100);
+            setTimeout(() => setIsVisible(true), delay);
         } else {
             observer.observe(element);
         }

@@ -1,9 +1,9 @@
 import useScrollFadeIn from '../hooks/useScrollFadeIn';
 
 const SKILLS = {
-    Backend: ['Java', 'Spring Boot', 'Spring MVC', 'Servlet', 'Oracle DB'],
+    Backend: ['Java', 'Spring Boot', 'Spring MVC', 'Servlet', 'Oracle DB', '...'],
     Frontend: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'HTML', 'JSP', '...'],
-    DevOps: ['Git', 'GitHub', 'Oracle Cloud'],
+    DevOps: ['Git', 'GitHub', 'Oracle Cloud','...'],
 };
 
 const EXPERIENCES = [
@@ -19,19 +19,33 @@ const EXPERIENCES = [
     },
 ];
 
-const ACTIVITY = [
+const EDUCATION = [
     {
         period: '2016.03 ~ 2018.02',
-        title: '대구 과학대학교 호텔관광과',
-        description: '제 24대 대의원회 학회장'
+        title: '대구 과학대학교',
+        description: '제 24대 대의원회 호텔관광과 학회장'
     }
+]
+
+const OTHER = [
+    {
+        period: '2023 ~ 2025',
+        title: '오뎅오색 대전 노은역점 운영',
+        description: '오뎅바 운영 자영업 경험'
+    },
+    {
+        period: '2020 ~ 2024',
+        title: '부동산 중개 업무',
+        description: '원, 투룸 임대로 시작해 상가 임대 업무 경험'
+    },
 ]
 
 function AboutPage() {
     const intro = useScrollFadeIn(0);
     const skills = useScrollFadeIn(150);
     const exp = useScrollFadeIn(300);
-    const act = useScrollFadeIn(450);
+    const education = useScrollFadeIn(450);
+    const other = useScrollFadeIn(550);
 
     return (
         <div className="space-y-20 pt-10">
@@ -65,9 +79,10 @@ function AboutPage() {
                             </h1>
                         </div>
                         <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
-                            백엔드 개발자를 목표로 공부하고 있습니다.
-                            Java와 Spring Boot를 중심으로 학습하며,
-                            직접 만들고 기록하는 것을 좋아합니다.
+                            Java와 Spring Boot, DB 백엔드를 중심으로, 역량 강화를 위해 <br/>
+                            React를 더해 풀스텍 개발을 공부하고 있는 직접 만들고, 부수고, <br/>
+                            넘어지면서 배우는 걸 좋아하는 슈퍼루키 신입 개발자 전태승입니다.<br/>
+                            이 블로그는 인재로 거듭날 성장과정 기록의 공간입니다.
                         </p>
                         <div className="flex flex-col gap-2">
                             {[
@@ -77,8 +92,8 @@ function AboutPage() {
                                     value: 'github.com/TaeSeungJeon'
                                 },
                                 {label: 'Email.', href: 'mailto:xoxoxx832@gmail.com', value: 'xoxoxx832@gmail.com'},
-                                {label: 'Velog.', href: 'https://velog.io/@xoxo832/posts', value: 'velog.io/@xoxo832'},
-                                {label: 'address.', value: 'DaeJeon, South Korea'},
+                                {label: 'Notion.', href: 'https://www.notion.so/Seung-Blog-3345853a763f80f99a3ed9c85453b270', value: 'tae seung Jeon-notion'},
+                                {label: 'Address.', value: 'DaeJeon, South Korea'},
 
                             ].map((contact) => (
                                 <div key={contact.label} className="flex items-center gap-4 text-sm">
@@ -97,8 +112,8 @@ function AboutPage() {
                             ))}
                         </div>
                     </div>
-
                 </div>
+                <hr color="gray 200" className="border-gray-200 dark:border-gray-800"/>
             </section>
 
             <section
@@ -129,8 +144,9 @@ function AboutPage() {
 
             <section ref={exp.ref}
                      className={`fade-up ${exp.isVisible ? 'visible' : ''} space-y-6`}>
+                <hr color="gray 200" className="border-gray-200 dark:border-gray-900"/>
                 <h2 className="text-s font-medium text-gray-400 dark:text-gray-300 uppercase tracking-widest">
-                    Experience
+                    DEV Experience
                 </h2>
                 <div className="space-y-6">
                     {EXPERIENCES.map((item) => (
@@ -151,13 +167,39 @@ function AboutPage() {
                 </div>
             </section>
 
-            <section ref={act.ref}
-                     className={`fade-up ${act.isVisible ? 'visible' : ''} space-y-6`}>
+            <section ref={education.ref}
+                     className={`fade-up ${education.isVisible ? 'visible' : ''} space-y-6`}>
+                <hr color="gray 200" className="border-gray-200 dark:border-gray-900"/>
                 <h2 className="text-s font-medium text-gray-400 dark:text-gray-300 uppercase tracking-widest">
-                    ACTIVITY
+                    EDUCATION
                 </h2>
                 <div className="space-y-6">
-                    {ACTIVITY.map((item) => (
+                    {EDUCATION.map((item) => (
+                        <div key={item.title} className="flex gap-4">
+              <span className="text-sm text-gray-400 dark:text-gray-500 w-22 shrink-0 pt-0.5">
+                {item.period}
+              </span>
+                            <div className="space-y-1">
+                                <p className="text-m font-medium text-gray-900 dark:text-white">
+                                    {item.title}
+                                </p>
+                                <p className="text-sm text-gray-400 dark:text-gray-500 leading-relaxed">
+                                    {item.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            <section ref={other.ref}
+                     className={`fade-up ${other.isVisible ? 'visible' : ''} space-y-6`}>
+                <hr color="gray 200" className="border-gray-200 dark:border-gray-900"/>
+                <h2 className="text-s font-medium text-gray-400 dark:text-gray-300 uppercase tracking-widest">
+                    OTHER_ACTIVITY
+                </h2>
+                <div className="space-y-6">
+                    {OTHER.map((item) => (
                         <div key={item.title} className="flex gap-4">
               <span className="text-sm text-gray-400 dark:text-gray-500 w-22 shrink-0 pt-0.5">
                 {item.period}

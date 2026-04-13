@@ -31,7 +31,7 @@ function Header({isDark, onToggle, auth, onLogout}: HeaderProps) {
                     to="/"
                     className="text-lg font-bold text-gray-900 dark:text-white hover:opacity-70 transition-opacity"
                 >
-                    Tae seung
+                    Tae-seung
                 </Link>
 
                 {/* 네비게이션 + 토글 */}
@@ -63,14 +63,17 @@ function Header({isDark, onToggle, auth, onLogout}: HeaderProps) {
                             <button
                                 onClick={onLogout}
                                 className="text-xs text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
-                                로그아웃
+                                가지마세요..
                             </button>
                         </div>
                     ) : (
 
-                        <a href={GITHUB_OAUTH_URL}
-                           className="text-xs text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
-                            👤
+                        <a href={GITHUB_OAUTH_URL}>
+                            <img
+                                src="./public/gitpng1.png"
+                                alt="GitHub 로그인"
+                                className="w-10 h-10"
+                            />
                         </a>
                     )}
 

@@ -1,8 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { getPost } from '../api/postApi';
 import type { PostDetail } from '../types';
+
+// ReactMarkdown의 code 컴포넌트에 전달되는 props 타입 정의
+interface CodeProps {
+    inline?: boolean;
+    className?: string;
+    children?: React.ReactNode;
+}
 
 function PostDetailPage() {
     const { filename } = useParams<{ filename: string }>();
@@ -76,17 +85,43 @@ function PostDetailPage() {
 
             {/* 글 본문 */}
             <div className="prose prose-gray dark:prose-invert max-w-none">
-                <ReactMarkdown>{post.content}</ReactMarkdown>
-            </div>
+                <ReactMarkdown
+                    components={{
+                        // code 블록을 가로채서 SyntaxHighlighter로 교체
+                        code({ inline, className, children }: CodeProps) {
+                            // className이 "language-java" 형태로 오면 "java"만 추출
+                            const match = /language-(\w+)/.exec(className || '');
+                            const language = match ? match[1] : '';
 
-            {/* 하단 뒤로가기 */}
-            <div className="pt-8 border-t border-gray-100 dark:border-gray-800">
-                <Link
-                    to="/posts"
-                    className="text-sm text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
+                            // inline 코드(`backtick`)는 그냥 <code> 태그 그대로
+                            if (inline || !language) {
+                                return (
+                                    <code className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-1.5 py-0.5 rounded text-sm font-mono">
+                                        {children}
+                                    </code>
+                                );
+                            }
+
+                            // 코드 블록(``` ```)은 SyntaxHighlighter로 렌더링
+                            return (
+                                <SyntaxHighlighter
+                                    language={language}
+                                    style={oneDark}
+                                    customStyle={{
+                                        borderRadius: '0.5rem',
+                                        fontSize: '0.875rem',
+                                        margin: '0',
+                                    }}
+                                    showLineNumbers
+                                >
+                                    {String(children).replace(/\n$/, '')}
+                                </SyntaxHighlighter>
+                            );
+                        },
+                    }}
                 >
-                    ← 목록으로 돌아가기
-                </Link>
+                    {post.content}
+                </ReactMarkdown>
             </div>
 
         </div>

@@ -55,7 +55,7 @@ function App() {
     return (
         <HashRouter>
             <div
-                className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+                className="min-h-screen bg-stone-200 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
                 <Header
                     isDark={isDark}
                     onToggle={() => setIsDark(!isDark)}

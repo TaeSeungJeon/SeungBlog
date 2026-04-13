@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getPosts } from '../api/postApi';
 import type { Post } from '../types';
-import useScrollFadeIn from '../hooks/useScrollFadeIn';
 
 const CATEGORIES = ['전체보기', 'Dev', 'Act.'];
 
@@ -10,7 +9,7 @@ function PostsPage() {
     const [posts, setPosts] = useState<Post[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [selectedCategory, setSelectedCategory] = useState('전체보기');
-    const listRef = useScrollFadeIn(0);
+
 
     useEffect(() => {
         getPosts()
@@ -53,13 +52,10 @@ function PostsPage() {
             </div>
 
             {/* 글 목록 */}
-            <section
-                ref={listRef.ref}
-                className={`fade-up ${listRef.isVisible ? 'visible' : ''} space-y-1`}
-            >
+            <section className="space-y-1">
                 {isLoading ? (
                     <div className="space-y-1">
-                        {[1, 2, 3].map((i) => (
+                        {[1, 2, 3, 4].map((i) => (
                             <div
                                 key={i}
                                 className="flex items-center justify-between py-4 border-b border-gray-100 dark:border-gray-800"
@@ -84,7 +80,7 @@ function PostsPage() {
                             className="group flex items-center justify-between py-4 border-b border-gray-100 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200"
                         >
                             <div className="space-y-1">
-                                <p className="text-m font-medium text-gray-900 dark:text-white group-hover:translate-x-1 transition-transform duration-200">
+                                <p className="text-lg font-medium text-gray-900 dark:text-white group-hover:translate-x-1 transition-transform duration-200">
                                     {post.title}
                                 </p>
                                 <p className="text-sm text-gray-400 dark:text-gray-500">
