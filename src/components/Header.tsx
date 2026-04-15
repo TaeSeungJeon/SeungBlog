@@ -1,7 +1,9 @@
 import {Link, useLocation} from 'react-router-dom';
 import type {AuthState} from "../types";
+import axiosInstance from '../api/axiosInstance';
 
 const LOGIN_ICON = 'gitIcon.png';
+const ADMIN_USERNAME = 'TaeSeungJeon';
 
 interface HeaderProps {
     isDark: boolean;
@@ -19,9 +21,13 @@ const NAV_ITEMS = [
 
 const GITHUB_OAUTH_URL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.VITE_GITHUB_CLIENT_ID}&scope=read:user,user:email`;
 
-
 function Header({isDark, onToggle, auth, onLogout}: HeaderProps) {
     const location = useLocation();
+
+    const handleClearCache = async () => {
+        await axiosInstance.delete('/api/posts/cache/clear');
+        window.location.reload();
+    };
 
     return (
         <header
@@ -57,11 +63,13 @@ function Header({isDark, onToggle, auth, onLogout}: HeaderProps) {
                     {/* 로그인/로그아웃 */}
                     {auth.isLoggedIn ? (
                         <div className="flex items-center gap-2">
+
                             <img
                                 src={auth.avatarUrl}
                                 alt={auth.username}
                                 className="w-6 h-6 rounded-full"
                             />
+
                             <button
                                 onClick={onLogout}
                                 className="text-xs text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
@@ -69,7 +77,6 @@ function Header({isDark, onToggle, auth, onLogout}: HeaderProps) {
                             </button>
                         </div>
                     ) : (
-
                         <a href={GITHUB_OAUTH_URL} className="shrink-0">
                             <img
                                 src={LOGIN_ICON}
@@ -87,6 +94,17 @@ function Header({isDark, onToggle, auth, onLogout}: HeaderProps) {
                     >
                         {isDark ? '☀️' : '🌙'}
                     </button>
+
+                    {/* 내 계정 전용 서버전송 캐시 초기화 버튼 */}
+                    {auth.username === ADMIN_USERNAME && (
+                        <button
+                            onClick={handleClearCache}
+                            className="text-xs text-blue-400 hover:text-blue-600 transition-colors"
+                            title="캐시 초기화"
+                        >
+                            전송!!🚀
+                        </button>
+                    )}
                 </div>
 
             </div>

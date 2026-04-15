@@ -4,7 +4,7 @@ const PROFILE_IMAGE2 = 'me.jpg';
 
 const SKILLS = {
     Backend: ['Java', 'Spring Boot', 'Spring MVC', 'Servlet', 'Oracle DB', '...'],
-    Frontend: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'HTML', 'JSP', '...'],
+    Frontend: ['React', 'TypeScript', 'Vite', 'CSS', 'Tailwind CSS', 'HTML', 'JSP', '...'],
     DevOps: ['Git', 'GitHub', 'Oracle Cloud','...'],
 };
 
@@ -81,7 +81,7 @@ function AboutPage() {
                             </h1>
                         </div>
                         <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
-                            Java와 Spring Boot, DB 백엔드를 중심으로, 역량 강화를 위해 <br/>
+                            Java와 Spring Boot, DB 등 백엔드를 기반으로 역량 강화를 위해 <br/>
                             React를 더해 풀스텍 개발을 공부하고 있는 직접 만들고, 부수고, <br/>
                             넘어지면서 배우는 걸 좋아하는 슈퍼루키 신입 개발자 전태승입니다.<br/>
                             이 블로그는 인재로 거듭날 성장과정 기록의 공간입니다.
