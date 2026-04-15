@@ -66,7 +66,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
                         <Route path="/posts" element={<PostsPage/>}/>
-                        <Route path="/posts/:filename" element={<PostDetailPage/>}/>
+                        <Route path="/posts/:filename" element={<PostDetailPage auth={auth}/>}/>
                         <Route path="/about" element={<AboutPage/>}/>
                         <Route path="/guestbook" element={<GuestbookPage auth={auth}/>}/>
                         <Route path="/playground" element={<PlaygroundPage/>}/>

@@ -3,11 +3,26 @@ export interface Post {
     date: string;
     description: string;
     filename: string;
-    category: string; // 카테고리 추가
+    category: string;
 }
 
 export interface PostDetail extends Post {
     content: string;
+}
+
+export interface Reply {
+    avatarUrl: string;
+    content: string;
+    createdAt: string;
+}
+
+export interface Comment {
+    id: number;
+    author: string;
+    avatarUrl: string;
+    content: string;
+    createdAt: string;
+    reply: Reply | null;
 }
 
 export interface GuestbookItem {
@@ -17,6 +32,7 @@ export interface GuestbookItem {
     author: string;
     avatarUrl: string;
     createdAt: string;
+    reply: Reply | null;
 }
 
 export interface AuthToken {
