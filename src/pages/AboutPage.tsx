@@ -56,7 +56,7 @@ function AboutPage() {
                 ref={intro.ref}
                 className={`fade-up ${intro.isVisible ? 'visible' : ''} space-y-6`}
             >
-                <div className="flex gap-6 items-start">
+                <div className="flex flex-col sm:flex-row gap-6 items-start">
 
                     {/* 프로필 이미지 */}
                     <div className="shrink-0">
@@ -65,7 +65,7 @@ function AboutPage() {
                             <img
                                 src={PROFILE_IMAGE2}
                                 alt="프로필 image"
-                                className="auto"
+                                className="w-40 sm:w-auto max-w-[200px]"
                             />
                         </div>
                     </div>

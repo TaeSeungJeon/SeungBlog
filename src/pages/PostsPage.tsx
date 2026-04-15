@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getPosts } from '../api/postApi';
 import type { Post } from '../types';
 
-const CATEGORIES = ['전체보기', 'Dev', 'Act.'];
+const CATEGORIES = ['전체보기', 'Dev', 'Etc.'];
 
 function PostsPage() {
     const [posts, setPosts] = useState<Post[]>([]);

@@ -112,20 +112,20 @@ function HomePage() {
                 ref={intro.ref}
                 className={`fade-up ${intro.isVisible ? 'visible' : ''} pt-10`}
             >
-                <div className="flex items-start justify-between gap-8">
+                <div className="flex flex-col-reverse sm:flex-row items-start justify-between gap-6 sm:gap-8">
 
                     {/* 텍스트 */}
                     <div className="space-y-6 flex-1">
                         <div className="space-y-2">
-                            <p className="text-4xl font-bold text-gray-900 dark:text-white">
+                            <p className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
                                 안녕하세요!
                             </p>
-                            <p className="text-4xl font-bold text-gray-900 dark:text-white">
+                            <p className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
                                 <span className="text-blue-500 dark:text-blue-400">{line1Text}</span>
                                 <span className="animate-pulse text-blue-500 dark:text-blue-400">|</span>
                                 를 좋아하는
                             </p>
-                            <p className="text-4xl font-bold text-gray-900 dark:text-white">
+                            <p className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
                                 개발자{' '}
                                 <span className="text-blue-500 dark:text-blue-500">{line2Text}</span>
                                 <span className="animate-pulse text-blue-500 dark:text-blue-400">|</span>
@@ -163,7 +163,7 @@ function HomePage() {
                             <img
                                 src={PROFILE_IMAGE}
                                 alt="프로필"
-                                className="w-60 h-auto"
+                                className="w-40 sm:w-60 h-auto mx-auto"
                             />
                         ) : (
                             <div
@@ -177,7 +177,7 @@ function HomePage() {
                 <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                     Java와 Spring Boot, DB 백엔드를 중심으로, React를 더해 풀스텍 개발을 공부하고 있는
                     <br/>
-                    직접 만들고, 부수고, 넘어지면서 배우는 걸 좋아하는 슈퍼루키 주니어 개발자 전태승입니다.
+                    직접 만들고, 부수고, 넘어지면서 배우는 걸 좋아하는 슈퍼루키 신입 개발자 전태승입니다.
                     <br/>
                     이 블로그가 그 기록의 공간입니다.
                 </p>

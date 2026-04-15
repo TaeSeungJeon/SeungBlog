@@ -26,7 +26,7 @@ function Header({isDark, onToggle, auth, onLogout}: HeaderProps) {
     return (
         <header
             className="sticky top-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm border-b border-gray-100 dark:border-gray-800">
-            <div className="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
 
                 {/* 로고 */}
                 <Link
@@ -37,13 +37,13 @@ function Header({isDark, onToggle, auth, onLogout}: HeaderProps) {
                 </Link>
 
                 {/* 네비게이션 + 토글 */}
-                <div className="flex items-center gap-6">
-                    <nav className="flex items-center gap-5">
+                <div className="flex items-center gap-2 sm:gap-6 overflow-x-auto min-w-0">
+                    <nav className="flex items-center gap-3 sm:gap-5 shrink-0">
                         {NAV_ITEMS.map((item) => (
                             <Link
                                 key={item.path}
                                 to={item.path}
-                                className={`text-sm transition-colors ${
+                                className={`text-xs sm:text-sm whitespace-nowrap transition-colors ${
                                     location.pathname === item.path
                                         ? 'text-gray-900 dark:text-white font-medium'
                                         : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
@@ -70,7 +70,7 @@ function Header({isDark, onToggle, auth, onLogout}: HeaderProps) {
                         </div>
                     ) : (
 
-                        <a href={GITHUB_OAUTH_URL}>
+                        <a href={GITHUB_OAUTH_URL} className="shrink-0">
                             <img
                                 src={LOGIN_ICON}
                                 alt="GitHub 로그인"

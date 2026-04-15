@@ -16,7 +16,7 @@ const PROJECTS = [
     },
     {
         title: 'Cinema-Talk Middle Project',
-        description: '대덕 인재개발원 중간 프로젝트 영화 커뮤니티 주제 1조 5인 PL:전태승',
+        description: '대덕 인재개발원 중간 프로젝트 1조 PL',
         image: CINEMA_TALK_IMG,
         stack: ['Java', 'Oracle DB', 'Servlet MVC', 'JSP', 'HTML', 'CSS', 'JavaScript', '...'],
         github: null,
@@ -49,7 +49,7 @@ function PlaygroundPage() {
 
             <section
                 ref={list.ref}
-                className={`fade-up ${list.isVisible ? 'visible' : ''} grid grid-cols-2 gap-4`}>
+                className={`fade-up ${list.isVisible ? 'visible' : ''} grid grid-cols-1 sm:grid-cols-2 gap-4`}>
                 {PROJECTS.map((project) => (
                     <div
                         key={project.title}
