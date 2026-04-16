@@ -10,6 +10,7 @@ import GuestbookPage from './pages/GuestbookPage';
 import PlaygroundPage from './pages/PlaygroundPage';
 import CallbackPage from './pages/CallbackPage';
 import type { AuthState } from './types';
+import { isTokenExpired } from './utils/jwt';
 
 function App() {
     const [isDark, setIsDark] = useState(() => {
@@ -45,6 +46,20 @@ function App() {
         };
         window.addEventListener('auth:logout', handleLogout);
         return () => window.removeEventListener('auth:logout', handleLogout);
+    }, []);
+
+    useEffect(() => {
+        const checkTokenOnFocus = () => {
+            const token = localStorage.getItem('accessToken');
+            if (token && isTokenExpired(token)) {
+                localStorage.removeItem('accessToken');
+                localStorage.removeItem('username');
+                localStorage.removeItem('avatarUrl');
+                setAuth({ isLoggedIn: false, username: '', avatarUrl: '' });
+            }
+        };
+        window.addEventListener('focus', checkTokenOnFocus);
+        return () => window.removeEventListener('focus', checkTokenOnFocus);
     }, []);
 
     const handleLogin = (username: string, avatarUrl: string, token: string) => {
