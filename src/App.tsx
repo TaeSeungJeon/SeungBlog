@@ -11,6 +11,8 @@ import PlaygroundPage from './pages/PlaygroundPage';
 import CallbackPage from './pages/CallbackPage';
 import type { AuthState } from './types';
 import { isTokenExpired } from './utils/jwt';
+import VisitorStatsPage from './pages/VisitorStatsPage';
+import { recordVisit } from './api/visitorApi';
 
 function App() {
     const [isDark, setIsDark] = useState(() => {
@@ -62,6 +64,10 @@ function App() {
         return () => window.removeEventListener('focus', checkTokenOnFocus);
     }, []);
 
+    useEffect(() => {
+        recordVisit();
+    }, []);
+
     const handleLogin = (username: string, avatarUrl: string, token: string) => {
         localStorage.setItem('accessToken', token);
         localStorage.setItem('username', username);
@@ -94,6 +100,7 @@ function App() {
                         <Route path="/guestbook" element={<GuestbookPage auth={auth} />} />
                         <Route path="/playground" element={<PlaygroundPage />} />
                         <Route path="/callback" element={<CallbackPage onLogin={handleLogin} />} />
+                        <Route path="/stats" element={<VisitorStatsPage auth={auth} />} />
                     </Routes>
                 </main>
                 <Footer />

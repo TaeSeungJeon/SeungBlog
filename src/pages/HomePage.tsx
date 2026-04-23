@@ -8,18 +8,18 @@ const PROFILE_IMAGE = 'itsme.png';
 
 const RECENT_PROJECTS = [
     {
-        title: '승 블로그 Front-end 맛보기',
+        title: '승 블로그 Front-end',
         description: 'Spring Boot + React + Vite 승 블로그 등장!',
         stack: ['Spring Boot', 'React', 'GitHub API'],
         github: 'https://github.com/TaeSeungJeon/SeungBlog',
-        status: 'in progress',
+        status: 'done',
     },
     {
-        title: '승 블로그 Back-end 맛보기',
+        title: '승 블로그 Back-end',
         description: '영업 비밀이라 알려주기 싫은데~~~',
         stack: ['Spring Boot', 'React', 'GitHub API'],
         github: 'https://github.com/TaeSeungJeon/seungBlog-backend',
-        status: 'in progress',
+        status: /*'in progress'*/'done',
     },
     {
         title: '중간 프로젝트 영화 커뮤니티 Cinema-Talk !',

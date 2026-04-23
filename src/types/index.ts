@@ -46,3 +46,10 @@ export interface AuthState {
     username: string;
     avatarUrl: string;
 }
+
+export interface VisitorStats {
+    totalViews: number;
+    todayViews: number;
+    weekViews: number;
+    dailyCounts: Record<string, Record<string, number>>;
+}

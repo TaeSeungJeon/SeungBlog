@@ -95,16 +95,25 @@ function Header({isDark, onToggle, auth, onLogout}: HeaderProps) {
                         {isDark ? '☀️' : '🌙'}
                     </button>
 
-                    {/* 내 계정 전용 서버전송 캐시 초기화 버튼 */}
                     {auth.username === ADMIN_USERNAME && (
-                        <button
-                            onClick={handleClearCache}
-                            className="text-xs text-blue-400 hover:text-blue-600 transition-colors"
-                            title="캐시 초기화"
-                        >
-                            전송!!🚀
-                        </button>
+                        <>
+                            <Link
+                                to="/stats"
+                                className="text-xs text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
+                                title="방문자 통계"
+                            >
+                                📊
+                            </Link>
+                            <button
+                                onClick={handleClearCache}
+                                className="text-xs text-blue-400 hover:text-blue-600 transition-colors"
+                                title="캐시 초기화"
+                            >
+                                전송!!🚀
+                            </button>
+                        </>
                     )}
+
                 </div>
 
             </div>
